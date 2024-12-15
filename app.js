@@ -13,7 +13,7 @@ async function getApp() {
 
   // Database
   // Use AZURE_COSMOS_CONNECTIONSTRING if available, otherwise fall back to MONGODB_URI
-  const mongoUri = process.env.MONGODB_URI; // For App Service, change to process.env.AZURE_COSMOS_CONNECTIONSTRING || process.env.MONGODB_URI;
+  const mongoUri = process.env.AZURE_COSMOS_CONNECTIONSTRING || process.env.MONGODB_URI; // For App Service, change to process.env.AZURE_COSMOS_CONNECTIONSTRING || process.env.MONGODB_URI;
 
   mongoose.connect(mongoUri).then(() => {
     console.log('Connected to database');
@@ -67,7 +67,7 @@ async function getApp() {
  * Normalize a port into a number, string, or false.
  */
 
- function normalizePort(val) {
+function normalizePort(val) {
   var port = parseInt(val, 10);
 
   if (isNaN(port)) {
